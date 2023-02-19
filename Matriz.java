@@ -25,7 +25,7 @@ public class Matriz {
         }// fin bucle de fors
         if (Math.abs(pares-impares)<=0) {
             flag = false;
-        } 
+        }
         return flag;
     }//fin método verificarMatriz
 
@@ -38,7 +38,6 @@ public class Matriz {
             System.out.println();
         }
     }//fin método imprimirMatriz
-
 
     //método prueba para verificar que los pares e impares tengan la misma cantidad
     public static void prueba(int[][] matriz){
@@ -56,6 +55,4 @@ public class Matriz {
         System.out.println(pares);
         System.out.println(impares);
     }
-
-
 }// fin clase
