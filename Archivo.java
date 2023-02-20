@@ -47,4 +47,52 @@ public class Archivo{
             System.out.println(ex.toString());
         }
     }//fin guardarTablerotEnCSV
+
+    public static int[][] cargarTableroGuardado(String nombreArchivo){
+        try {
+            int [][] matriz = new int [10][10];
+            String linea;
+            FileReader fileRead = new FileReader(nombreArchivo);
+            BufferedReader buffRead = new BufferedReader(fileRead);
+            String [] valoresLinea;
+            int contador = 0;
+            System.out.print("\nCargando datos del tablero guardado desde: "+nombreArchivo);
+            while ((linea = buffRead.readLine()) != null) {
+                valoresLinea = linea.split(",");
+                for(int i=0; i<valoresLinea.length; i++){
+                    matriz[contador][i] = Integer.parseInt(valoresLinea[i]);
+                    //prueba de carga
+                    System.out.printf("%3d", matriz[i][j]);
+                }//fin for
+                contador++;
+            }
+            buffRead.close();
+            System.out.println("Matriz cargada con éxito");
+            return matriz;
+
+        } catch (IOException ex) {
+            System.out.println("Error al cargar la matriz");
+            return null;
+        }
+    }//fin método cargarTableroGuardado
+
+    public static void cargarDatosGuardados(String nombreArchivo){
+        try {
+            String cadenaTemp;
+            FileReader fileRead = new FileReader(nombreArchivo);
+            BufferedReader buffRead = new BufferedReader(fileRead);
+            int linea = 1;
+
+            while ((cadenaTemp = buffRead.readLine()) != null) {
+                //System.out.print("Linea "+Integer.toString(linea)+" : ");
+                System.out.println(cadenaTemp);
+                linea++;
+            }
+
+            buffRead.close();
+        } catch (IOException ex) {
+            System.out.println("Error al cargar los datos o no hay partidas guardadas");
+        }
+    }//fin método cargarDatosGuardados
+
 }//fin clase
