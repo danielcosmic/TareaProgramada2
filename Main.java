@@ -33,12 +33,10 @@ public class Main{
             tablero = Matriz.crearMatriz();
             } while (Matriz.verificarMatriz(tablero));
 
+            //PRUEBA
             Matriz.imprimirMatriz(tablero);
             //método prueba para verificar que los pares e impares tengan la misma cantidad
             Matriz.prueba(tablero);
-
-            //PRUEBAA
-            Archivo.guardarTablerotEnCSV(tablero);
 
             System.out.println(" ");
             System.out.println("-En cada turno deberan ingresar coordenadas correspondientes a posiciones en el tablero.");
@@ -46,10 +44,10 @@ public class Main{
             System.out.println("-Ejemplo de coordenada: 1,2");
             System.out.println(" ");
 
-            //hacer un do while aqui -R
             do{
                 //for para jugar 6 partidas y luego preguntar si se desea guardar la partida
                 for (int i=0; i<6; i++){
+
                     //turno jugador1
                     System.out.println(jug1.getNombre() + ", ingrese una coordenada:");
                     String c1 = in.nextLine();
@@ -63,12 +61,12 @@ public class Main{
                     }else if ((tablero[coordenada1[0]][coordenada1[1]] > 0) && (((tablero[coordenada1[0]][coordenada1[1]] % 2) == 0))){
                         tablero[coordenada1[0]][coordenada1[1]] = -3;
                         fallosJ1+=1;
-                        //prueba
+                        //PRUEBA
                         System.out.println("fallos: " + fallosJ1);
                     }else{
                         tablero[coordenada1[0]][coordenada1[1]] = -3;
                         fallosJ1+=1;
-                        //prueba
+                        //PRUEBA
                         System.out.println("fallos: " + fallosJ1);
                     }// fin todos los if -----------------------------------
                     if(fallosJ1>=5){
@@ -88,7 +86,7 @@ public class Main{
                     }else if ((tablero[coordenada2[0]][coordenada2[1]] > 0) && (((tablero[coordenada2[0]][coordenada2[1]] % 2) != 0) && (tablero[coordenada2[0]][coordenada2[1]]!=0))){
                         tablero[coordenada2[0]][coordenada2[1]] = -3;
                         fallosJ2+=1;
-                        //prueba
+                        //PRUEBA
                         System.out.println("fallos: " + fallosJ2);
                     }// fin todos los if -----------------------------------
                     if(fallosJ2>=5){
@@ -124,10 +122,12 @@ public class Main{
                     }
                 }//fin if
 
+                //guardar partida
                 System.out.println("Desea guardar la partida? Ingrese 1 para guardar la partida o 2 para continuar jugando sin guardarla");
                 String opcionG = in.nextLine();
                 if (opcionG.equals("1")){
-                    //guardar partida
+                    Archivo.guardarTableroEnCSV(tablero, "Tablero");
+                    Archivo.guardarDatosJugadores("Jugadores", jug1, jug2, fallosJ1, fallosJ2);
                 }else if(opcionG.equals("2")){
                     //sigue
                 }else{
@@ -136,9 +136,11 @@ public class Main{
             }while ( (verificarTablero(tablero)) && (fallosJ1<5) && (fallosJ2<5) );
 
         }//fin if opcion partida nueva o existente
+
     }catch(Exception e){
         System.out.println("Error en el juego");
     }//fin try/catch
+
         in.close();
     }//fin main
 

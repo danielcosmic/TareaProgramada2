@@ -7,26 +7,26 @@ import java.io.IOException;
 
 public class Archivo{
 
-    public static void grabarDatosJugadores(String rutaNombreArch, Jugador jugador1, Jugador jugador2, int fallosJ1, int fallosJ2){
+    public static void guardarDatosJugadores(String nombreArchivo, Jugador jugador1, Jugador jugador2, int fallosJ1, int fallosJ2){
         try{
-            FileWriter archivo = new FileWriter(rutaNombreArch);
+            FileWriter archivo = new FileWriter(nombreArchivo);
             BufferedWriter buffWrite;
             buffWrite = new BufferedWriter (archivo);
 
-            buffWrite.write(jugador1.getNombre+"\n");//linea 1 nombre jugador 1
+            buffWrite.write(jugador1.getNombre()+"\n");//linea 1 nombre jugador 1
             buffWrite.write(Integer.toString(fallosJ1)+"\n");//linea 2 fallos jugador 1
-            buffWrite.write(jugador2.getNombre+"\n");//linea 3 nombre jugador 2
+            buffWrite.write(jugador2.getNombre()+"\n");//linea 3 nombre jugador 2
             buffWrite.write(Integer.toString(fallosJ2)+"\n");//linea 4 fallos jugador 2
             buffWrite.close();
         }catch (IOException ex) {
         System.out.println(ex.toString());
         }
-    }//fin grabarDatosJugadores
+    }//fin guardarDatosJugadores
 
-    public static void guardarTablerotEnCSV(int[][] tablero){
+    public static void guardarTableroEnCSV(int[][] tablero, String nombreArchivo){
         //
         try {
-            FileWriter archivo = new FileWriter(Tablero);
+            FileWriter archivo = new FileWriter(nombreArchivo);
             BufferedWriter buffWrite;
             buffWrite = new BufferedWriter(archivo);
             for (int i=0; i<tablero.length; i++){
