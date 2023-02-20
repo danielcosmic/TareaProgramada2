@@ -48,11 +48,9 @@ public class Main{
         }else if (opcionP.equals("2")){
             Archivo.cargarDatosGuardados("Jugadores");
             Archivo.cargarTableroGuardado("Tablero");
-            jugarPartida(tablero, jug1, jug2, fallosJ1, fallosJ2);
         }else{
             System.out.println("Opción Inválida.");
         }
-
         in.close();
     }//fin main
 
@@ -178,6 +176,6 @@ public class Main{
                 System.out.println("Opcion incorrecta");
             }
         }while ( (verificarTablero(tablero)) && (fallosJ1<5) && (fallosJ2<5) );
+        in.close();
     }//fin metodo jugarPartida
-
 }//fin clase

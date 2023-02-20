@@ -62,7 +62,6 @@ public class Archivo{
                 for(int i=0; i<valoresLinea.length; i++){
                     matriz[contador][i] = Integer.parseInt(valoresLinea[i]);
                     //prueba de carga
-                    System.out.printf("%3d", matriz[i][j]);
                 }//fin for
                 contador++;
             }
