@@ -37,6 +37,9 @@ public class Main{
             //método prueba para verificar que los pares e impares tengan la misma cantidad
             Matriz.prueba(tablero);
 
+            //PRUEBAA
+            Archivo.guardarTablerotEnCSV(tablero);
+
             System.out.println(" ");
             System.out.println("-En cada turno deberan ingresar coordenadas correspondientes a posiciones en el tablero.");
             System.out.println("-El tablero es de 10x10 por lo que la coordenada estara compuesta por dos numeros del 1 al 10 separados por una coma.");

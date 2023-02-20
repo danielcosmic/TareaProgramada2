@@ -22,4 +22,29 @@ public class Archivo{
         System.out.println(ex.toString());
         }
     }//fin grabarDatosJugadores
+
+    public static void guardarTablerotEnCSV(int[][] tablero){
+        //
+        try {
+            FileWriter archivo = new FileWriter(Tablero);
+            BufferedWriter buffWrite;
+            buffWrite = new BufferedWriter(archivo);
+            for (int i=0; i<tablero.length; i++){
+                for (int j=0; j<tablero[i].length; j++){
+                    if (j < tablero[i].length-1){
+                        //validamos que no sea la última columna
+                        buffWrite.write(Integer.toString(tablero[i][j])+",");
+                    }
+                    else{
+                        //cuando se llega a la última columna se imprime un cambio de línea
+                        buffWrite.write(Integer.toString(tablero[i][j])+"\n");
+                    }
+                }//for con j que recorre las columnas
+            }//for con i que recorre las filas
+            buffWrite.close();
+        }
+        catch (IOException ex) {
+            System.out.println(ex.toString());
+        }
+    }//fin guardarTablerotEnCSV
 }//fin clase
