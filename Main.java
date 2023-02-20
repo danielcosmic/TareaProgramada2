@@ -32,10 +32,10 @@ public class Main{
             tablero = Matriz.crearMatriz();
             } while (Matriz.verificarMatriz(tablero));
 
-            //PRUEBA
+            /*//PRUEBA
             Matriz.imprimirMatriz(tablero);
             //método prueba para verificar que los pares e impares tengan la misma cantidad
-            Matriz.prueba(tablero);
+            Matriz.prueba(tablero);*/
 
             System.out.println(" ");
             System.out.println("-En cada turno deberan ingresar coordenadas correspondientes a posiciones en el tablero.");
@@ -103,12 +103,12 @@ public class Main{
                     tablero[coordenada1[0]][coordenada1[1]] = -3;
                     fallosJ1+=1;
                     //PRUEBA
-                    System.out.println("fallos: " + fallosJ1);
+                    //System.out.println("fallos: " + fallosJ1);
                 }else{
                     tablero[coordenada1[0]][coordenada1[1]] = -3;
                     fallosJ1+=1;
                     //PRUEBA
-                    System.out.println("fallos: " + fallosJ1);
+                    //System.out.println("fallos: " + fallosJ1);
                 }// fin todos los if -----------------------------------
                 if(fallosJ1>=5){
                     break;
@@ -128,7 +128,7 @@ public class Main{
                     tablero[coordenada2[0]][coordenada2[1]] = -3;
                     fallosJ2+=1;
                     //PRUEBA
-                    System.out.println("fallos: " + fallosJ2);
+                    //System.out.println("fallos: " + fallosJ2);
                 }// fin todos los if -----------------------------------
                 if(fallosJ2>=5){
                     break;
