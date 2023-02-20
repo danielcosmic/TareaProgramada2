@@ -6,6 +6,7 @@ public class Main{
         System.out.println("Ingrese 1 para crear una nueva partida o 2 para cargar una partida existente:");
         String opcionP = in.nextLine();
 
+    try{
         //if para comenzar una nueva patida o cargar una existente
         if (opcionP.equals("1")){
             //partida nueva
@@ -54,9 +55,9 @@ public class Main{
                     //if para verificar si es par, impar o si ya se escogio antes
                     if (tablero[coordenada1[0]][coordenada1[1]] < 0){
                         //ya se escogio esa posicion antes
-                    }else if ( (tablero[coordenada1[0]][coordenada1[1]] > 0) && ( ((tablero[coordenada1[0]][coordenada1[1]] % 2) != 0) && (tablero[coordenada1[0]][coordenada1[1]]!=0) ) ){
+                    }else if ((tablero[coordenada1[0]][coordenada1[1]] > 0) && (((tablero[coordenada1[0]][coordenada1[1]] % 2) != 0) && (tablero[coordenada1[0]][coordenada1[1]]!=0))){
                         tablero[coordenada1[0]][coordenada1[1]] = -1;
-                    }else if ( (tablero[coordenada1[0]][coordenada1[1]] > 0) && ( ((tablero[coordenada1[0]][coordenada1[1]] % 2) == 0) ) ){
+                    }else if ((tablero[coordenada1[0]][coordenada1[1]] > 0) && (((tablero[coordenada1[0]][coordenada1[1]] % 2) == 0))){
                         tablero[coordenada1[0]][coordenada1[1]] = -3;
                         fallosJ1+=1;
                         //prueba
@@ -67,6 +68,9 @@ public class Main{
                         //prueba
                         System.out.println("fallos: " + fallosJ1);
                     }// fin todos los if -----------------------------------
+                    if(fallosJ1>=5){
+                        break;
+                    }//fin if
 
                     //turno jugador2
                     System.out.println(jug2.getNombre() + ", ingrese una coordenada:");
@@ -76,15 +80,46 @@ public class Main{
                     //if para verificar si es par, impar o si ya se escogio antes
                     if (tablero[coordenada2[0]][coordenada2[1]] < 0){
                         //ya se escogio esa posicion antes
-                    }else if ( (tablero[coordenada2[0]][coordenada2[1]] > 0) && ( ((tablero[coordenada2[0]][coordenada2[1]] % 2) == 0) || (tablero[coordenada2[0]][coordenada2[1]] == 0) ) ){
+                    }else if ((tablero[coordenada2[0]][coordenada2[1]] > 0) && (((tablero[coordenada2[0]][coordenada2[1]] % 2) == 0) || (tablero[coordenada2[0]][coordenada2[1]] == 0))){
                         tablero[coordenada2[0]][coordenada2[1]] = -2;
-                    }else if ( (tablero[coordenada2[0]][coordenada2[1]] > 0) && ( ((tablero[coordenada2[0]][coordenada2[1]] % 2) != 0) && (tablero[coordenada2[0]][coordenada2[1]]!=0) ) ){
+                    }else if ((tablero[coordenada2[0]][coordenada2[1]] > 0) && (((tablero[coordenada2[0]][coordenada2[1]] % 2) != 0) && (tablero[coordenada2[0]][coordenada2[1]]!=0))){
                         tablero[coordenada2[0]][coordenada2[1]] = -3;
                         fallosJ2+=1;
                         //prueba
                         System.out.println("fallos: " + fallosJ2);
+                    }// fin todos los if -----------------------------------
+                    if(fallosJ2>=5){
+                        break;
                     }//fin if
                 }//fin for
+
+                if((fallosJ1>=5)||(fallosJ2>=5)){
+                    if(fallosJ1>=5){
+                        System.out.println("Fin de la partida");
+                        System.out.println("El ganador es: " + jug2.getNombre());
+                        break;
+                    }else{
+                        System.out.println("Fin de la partida");
+                        System.out.println("El ganador es: " + jug1.getNombre());
+                        break;
+                    }//fin if
+                }//fin if
+
+                if(!verificarTablero(tablero)){
+                    if(fallosJ1<fallosJ2){
+                        System.out.println("Fin de la partida");
+                        System.out.println("El ganador es: " + jug1.getNombre());
+                        break;
+                    }else if(fallosJ2<fallosJ1){
+                        System.out.println("Fin de la partida");
+                        System.out.println("El ganador es: " + jug2.getNombre());
+                        break;
+                    }else if(fallosJ2==fallosJ1){
+                        System.out.println("Fin de la partida");
+                        System.out.println("Empate! Ambos ganan");
+                        break;
+                    }
+                }//fin if
 
                 System.out.println("Desea guardar la partida? Ingrese 1 para guardar la partida o 2 para continuar jugando sin guardarla");
                 String opcionG = in.nextLine();
@@ -97,7 +132,10 @@ public class Main{
                 }
             }while ( (verificarTablero(tablero)) && (fallosJ1<5) && (fallosJ2<5) );
 
-        }//fin if opcion partida nueva o existente1
+        }//fin if opcion partida nueva o existente
+    }catch(Exception e){
+        System.out.println("Error en el juego");
+    }//fin try/catch
         in.close();
     }//fin main
 

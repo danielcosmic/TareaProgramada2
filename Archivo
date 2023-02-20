@@ -1,0 +1,25 @@
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Archivo{
+
+    public static void grabarDatosJugadores(String rutaNombreArch, Jugador jugador1, Jugador jugador2, int fallosJ1, int fallosJ2){
+        try{
+            FileWriter archivo = new FileWriter(rutaNombreArch);
+            BufferedWriter buffWrite;
+            buffWrite = new BufferedWriter (archivo);
+
+            buffWrite.write(jugador1.getNombre+"\n");//linea 1 nombre jugador 1
+            buffWrite.write(Integer.toString(fallosJ1)+"\n");//linea 2 fallos jugador 1
+            buffWrite.write(jugador2.getNombre+"\n");//linea 3 nombre jugador 2
+            buffWrite.write(Integer.toString(fallosJ2)+"\n");//linea 4 fallos jugador 2
+            buffWrite.close();
+        }catch (IOException ex) {
+        System.out.println(ex.toString());
+        }
+    }//fin grabarDatosJugadores
+}//fin clase
