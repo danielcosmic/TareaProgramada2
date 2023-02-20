@@ -127,6 +127,7 @@ public class Main{
                 if (opcionG.equals("1")){
                     Archivo.guardarTableroEnCSV(tablero, "Tablero");
                     Archivo.guardarDatosJugadores("Jugadores", jug1, jug2, fallosJ1, fallosJ2);
+                    System.out.println("Partida guardada");
                 }else if(opcionG.equals("2")){
                     //sigue
                 }else{
