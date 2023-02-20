@@ -135,7 +135,13 @@ public class Main{
                 }
             }while ( (verificarTablero(tablero)) && (fallosJ1<5) && (fallosJ2<5) );
 
-        }//fin if opcion partida nueva o existente
+        }else if (opcionP.equals("2")){
+            Archivo.cargarDatosGuardados("Jugadores");
+            Archivo.cargarTableroGuardado("Tablero");
+        }else{
+            System.out.println("Opción Inválida.");
+        }
+
         in.close();
     }//fin main
 
