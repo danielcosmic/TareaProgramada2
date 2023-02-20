@@ -56,12 +56,17 @@ public class Main{
                         //ya se escogio esa posicion antes
                     }else if ( (tablero[coordenada1[0]][coordenada1[1]] > 0) && ( ((tablero[coordenada1[0]][coordenada1[1]] % 2) != 0) && (tablero[coordenada1[0]][coordenada1[1]]!=0) ) ){
                         tablero[coordenada1[0]][coordenada1[1]] = -1;
-                    }else if ( (tablero[coordenada1[0]][coordenada1[1]] > 0) && ( ((tablero[coordenada1[0]][coordenada1[1]] % 2) == 0) || (tablero[coordenada1[0]][coordenada1[1]] == 0) ) ){
+                    }else if ( (tablero[coordenada1[0]][coordenada1[1]] > 0) && ( ((tablero[coordenada1[0]][coordenada1[1]] % 2) == 0) ) ){
                         tablero[coordenada1[0]][coordenada1[1]] = -3;
                         fallosJ1+=1;
                         //prueba
-                        System.out.println("fallos" + fallosJ1);
-                    }//fin if
+                        System.out.println("fallos: " + fallosJ1);
+                    }else{
+                        tablero[coordenada1[0]][coordenada1[1]] = -3;
+                        fallosJ1+=1;
+                        //prueba
+                        System.out.println("fallos: " + fallosJ1);
+                    }// fin todos los if -----------------------------------
 
                     //turno jugador2
                     System.out.println(jug2.getNombre() + ", ingrese una coordenada:");
@@ -77,7 +82,7 @@ public class Main{
                         tablero[coordenada2[0]][coordenada2[1]] = -3;
                         fallosJ2+=1;
                         //prueba
-                        System.out.println("fallos" + fallosJ2);
+                        System.out.println("fallos: " + fallosJ2);
                     }//fin if
                 }//fin for
 
@@ -90,7 +95,7 @@ public class Main{
                 }else{
                     System.out.println("Opcion incorrecta");
                 }
-            }while ( (verificarTablero(tablero)) || (fallosJ1<5) || (fallosJ2<5) );
+            }while ( (verificarTablero(tablero)) && (fallosJ1<5) && (fallosJ2<5) );
 
         }//fin if opcion partida nueva o existente1
         in.close();
