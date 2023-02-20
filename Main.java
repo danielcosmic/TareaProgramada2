@@ -6,7 +6,6 @@ public class Main{
         System.out.println("Ingrese 1 para crear una nueva partida o 2 para cargar una partida existente:");
         String opcionP = in.nextLine();
 
-    try{
         //if para comenzar una nueva patida o cargar una existente
         if (opcionP.equals("1")){
             //partida nueva
@@ -136,11 +135,6 @@ public class Main{
             }while ( (verificarTablero(tablero)) && (fallosJ1<5) && (fallosJ2<5) );
 
         }//fin if opcion partida nueva o existente
-
-    }catch(Exception e){
-        System.out.println("Error en el juego");
-    }//fin try/catch
-
         in.close();
     }//fin main
 
